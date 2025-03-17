@@ -90,7 +90,6 @@
             color: #555;
         }
 
-        /* Ajustar el gráfico para que ocupe el ancho completo */
         #graph {
             width: 100%;
             max-width: 100%;
@@ -119,26 +118,11 @@
 
         <h3>Seleccionar Estaciones:</h3>
         <div class="stations">
-            <label>
-                <input type="checkbox" id="arenales" name="stations" value="Est.Arenales (mm)" checked>
-                Est.Arenales (mm)
-            </label>
-            <label>
-                <input type="checkbox" id="cuenca" name="stations" value="Est.CELEC_Cuenca (mm)">
-                Est.CELEC_Cuenca (mm)
-            </label>
-            <label>
-                <input type="checkbox" id="guarumales" name="stations" value="Est. Guarumales (mm)">
-                Est. Guarumales (mm)
-            </label>
-            <label>
-                <input type="checkbox" id="sevilla" name="stations" value="Est. Sevilla (mm)">
-                Est. Sevilla (mm)
-            </label>
-            <label>
-                <input type="checkbox" id="sta_barbara" name="stations" value="Est. Sta_Barbara (mm)">
-                Est. Sta_Barbara (mm)
-            </label>
+            <label><input type="checkbox" id="arenales" name="stations" value="Est.Arenales (mm)" checked> Est.Arenales (mm)</label>
+            <label><input type="checkbox" id="cuenca" name="stations" value="Est.CELEC_Cuenca (mm)"> Est.CELEC_Cuenca (mm)</label>
+            <label><input type="checkbox" id="guarumales" name="stations" value="Est. Guarumales (mm)"> Est. Guarumales (mm)</label>
+            <label><input type="checkbox" id="sevilla" name="stations" value="Est. Sevilla (mm)"> Est. Sevilla (mm)</label>
+            <label><input type="checkbox" id="sta_barbara" name="stations" value="Est. Sta_Barbara (mm)"> Est. Sta_Barbara (mm)</label>
         </div>
 
         <button onclick="filterData()">Filtrar Datos</button>
@@ -147,32 +131,24 @@
     </div>
 
     <script>
-        // Rutas a los archivos JSON
         const dailyJsonUrl = './daily_precipitation_summary.json';
         const hourlyJsonUrl = './merged_precipitation_data.json';
 
         let dailyData = [];
         let hourlyData = [];
 
-        // Cargar los archivos JSON
         fetch(dailyJsonUrl)
             .then(response => response.json())
-            .then(data => {
-                dailyData = data;
-            })
+            .then(data => { dailyData = data; })
             .catch(error => console.error('Error cargando daily JSON:', error));
 
         fetch(hourlyJsonUrl)
             .then(response => response.json())
-            .then(data => {
-                hourlyData = data;
-            })
+            .then(data => { hourlyData = data; })
             .catch(error => console.error('Error cargando hourly JSON:', error));
 
-        // Función para filtrar los datos
         function filterData() {
             const messages = document.getElementById('messages');
-
             const startDateInput = document.getElementById('start-date').value;
             const endDateInput = document.getElementById('end-date').value;
 
@@ -188,13 +164,11 @@
             const stations = Array.from(document.querySelectorAll('input[name="stations"]:checked'))
                 .map(checkbox => checkbox.value);
 
-            // Filtrar los datos diarios según la fecha seleccionada
             const filteredDailyData = dailyData.filter(entry => {
                 const entryDate = new Date(entry.TmStamp);
                 return entryDate >= startDate && entryDate <= endDate;
             });
 
-            // Filtrar los datos horarios si se selecciona una hora
             let filteredHourlyData = [];
             if (hourStart && hourEnd) {
                 filteredHourlyData = hourlyData.filter(entry => {
@@ -205,7 +179,6 @@
                 });
             }
 
-            // Crear los datos para el gráfico
             const graphData = stations.map(station => ({
                 x: filteredDailyData.map(entry => entry.TmStamp),
                 y: filteredDailyData.map(entry => entry[station]),
@@ -213,7 +186,6 @@
                 name: station
             }));
 
-            // Si se selecciona hora, agregar datos horarios al gráfico
             if (filteredHourlyData.length > 0) {
                 stations.forEach(station => {
                     graphData.push({
@@ -221,12 +193,12 @@
                         y: filteredHourlyData.map(entry => entry[station]),
                         type: 'scatter',
                         mode: 'lines+markers',
-                        name: station + ' (Hora)'
+                        name: station + ' (Hora)',
+                        hovertemplate: '%{x|%Y-%m-%d %H:00}<br>' + station + ': %{y:.2f} mm<extra></extra>'
                     });
                 });
             }
 
-            // Graficar usando Plotly
             Plotly.newPlot('graph', graphData, {
                 title: 'Precipitación Acumulada',
                 xaxis: {
@@ -246,23 +218,21 @@
                     orientation: 'h',
                     x: 0.5,
                     xanchor: 'center',
-                    y: -0.3, // Mueve la leyenda debajo del gráfico
-                    font: {
-                        size: 12
-                    }
+                    y: -0.3,
+                    font: { size: 12 }
                 },
                 margin: {
                     t: 50,
-                    b: 150, // Ajusta el margen inferior para dar espacio a la leyenda
+                    b: 150,
                     l: 50,
                     r: 50
                 }
-            }, {
-                responsive: true
-            });
+            }, { responsive: true });
+
             messages.innerText = 'Datos cargados y gráficos generados correctamente.';
         }
     </script>
 </body>
 
 </html>
+
