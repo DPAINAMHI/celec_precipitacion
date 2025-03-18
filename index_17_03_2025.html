@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Precipitación - Datos CELEC</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #8bbff3;
+            margin: 0;
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        button {
+            display: block;
+            margin: 5px 0;
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stations label {
+            flex: 1;
+            cursor: pointer;
+            background: #e7e9eb;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .stations label:hover {
+            background: #d1d3d5;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #messages {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Ajustar el gráfico para que ocupe el ancho completo */
+        #graph {
+            width: 100%;
+            max-width: 100%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dashboard de Precipitación - Datos CELEC</h1>
+
+        <div class="date-selection">
+            <label for="start-date">Fecha Inicial:</label>
+            <input type="date" id="start-date" name="start-date">
+            <label for="end-date">Fecha Final:</label>
+            <input type="date" id="end-date" name="end-date">
+        </div>
+
+        <div class="hour-selection">
+            <label for="hour-start">Hora Inicial (Opcional):</label>
+            <input type="time" id="hour-start" name="hour-start">
+            <label for="hour-end">Hora Final (Opcional):</label>
+            <input type="time" id="hour-end" name="hour-end">
+        </div>
+
+        <h3>Seleccionar Estaciones:</h3>
+        <div class="stations">
+            <label>
+                <input type="checkbox" id="arenales" name="stations" value="Est.Arenales (mm)" checked>
+                Est.Arenales (mm)
+            </label>
+            <label>
+                <input type="checkbox" id="cuenca" name="stations" value="Est.CELEC_Cuenca (mm)">
+                Est.CELEC_Cuenca (mm)
+            </label>
+            <label>
+                <input type="checkbox" id="guarumales" name="stations" value="Est. Guarumales (mm)">
+                Est. Guarumales (mm)
+            </label>
+            <label>
+                <input type="checkbox" id="sevilla" name="stations" value="Est. Sevilla (mm)">
+                Est. Sevilla (mm)
+            </label>
+            <label>
+                <input type="checkbox" id="sta_barbara" name="stations" value="Est. Sta_Barbara (mm)">
+                Est. Sta_Barbara (mm)
+            </label>
+        </div>
+
+        <button onclick="filterData()">Filtrar Datos</button>
+        <div id="messages"></div>
+        <div id="graph"></div>
+    </div>
+
+    <script>
+        // Rutas a los archivos JSON
+        const dailyJsonUrl = './daily_precipitation_summary.json';
+        const hourlyJsonUrl = './merged_precipitation_data.json';
+
+        let dailyData = [];
+        let hourlyData = [];
+
+        // Cargar los archivos JSON
+        fetch(dailyJsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                dailyData = data;
+            })
+            .catch(error => console.error('Error cargando daily JSON:', error));
+
+        fetch(hourlyJsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                hourlyData = data;
+            })
+            .catch(error => console.error('Error cargando hourly JSON:', error));
+
+        // Función para filtrar los datos
+        function filterData() {
+            const messages = document.getElementById('messages');
+
+            const startDateInput = document.getElementById('start-date').value;
+            const endDateInput = document.getElementById('end-date').value;
+
+            if (!startDateInput || !endDateInput) {
+                messages.innerText = 'Por favor selecciona una fecha inicial y final.';
+                return;
+            }
+
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(endDateInput);
+            const hourStart = document.getElementById('hour-start').value;
+            const hourEnd = document.getElementById('hour-end').value;
+            const stations = Array.from(document.querySelectorAll('input[name="stations"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            // Filtrar los datos diarios según la fecha seleccionada
+            const filteredDailyData = dailyData.filter(entry => {
+                const entryDate = new Date(entry.TmStamp);
+                return entryDate >= startDate && entryDate <= endDate;
+            });
+
+            // Filtrar los datos horarios si se selecciona una hora
+            let filteredHourlyData = [];
+            if (hourStart && hourEnd) {
+                filteredHourlyData = hourlyData.filter(entry => {
+                    const entryDate = new Date(entry.TmStamp);
+                    return entryDate >= startDate && entryDate <= endDate &&
+                        entryDate.getHours() >= parseInt(hourStart.split(':')[0]) &&
+                        entryDate.getHours() <= parseInt(hourEnd.split(':')[0]);
+                });
+            }
+
+            // Crear los datos para el gráfico
+            const graphData = stations.map(station => ({
+                x: filteredDailyData.map(entry => entry.TmStamp),
+                y: filteredDailyData.map(entry => entry[station]),
+                type: 'bar',
+                name: station
+            }));
+
+            // Si se selecciona hora, agregar datos horarios al gráfico
+            if (filteredHourlyData.length > 0) {
+                stations.forEach(station => {
+                    graphData.push({
+                        x: filteredHourlyData.map(entry => entry.TmStamp),
+                        y: filteredHourlyData.map(entry => entry[station]),
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        name: station + ' (Hora)'
+                    });
+                });
+            }
+
+            // Graficar usando Plotly
+            Plotly.newPlot('graph', graphData, {
+                title: 'Precipitación Acumulada',
+                xaxis: {
+                    title: 'Fecha',
+                    showgrid: true,
+                    zeroline: false,
+                    type: 'date',
+                    tickformat: '%Y-%m-%d',
+                    tickangle: -45
+                },
+                yaxis: {
+                    title: 'Precipitación (mm)',
+                    showline: true,
+                    zeroline: false
+                },
+                legend: {
+                    orientation: 'h',
+                    x: 0.5,
+                    xanchor: 'center',
+                    y: -0.3, // Mueve la leyenda debajo del gráfico
+                    font: {
+                        size: 12
+                    }
+                },
+                margin: {
+                    t: 50,
+                    b: 150, // Ajusta el margen inferior para dar espacio a la leyenda
+                    l: 50,
+                    r: 50
+                }
+            }, {
+                responsive: true
+            });
+            messages.innerText = 'Datos cargados y gráficos generados correctamente.';
+        }
+    </script>
+</body>
+
+</html>
