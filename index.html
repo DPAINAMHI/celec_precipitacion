@@ -91,7 +91,6 @@
         <label for="hour-start">Hora Inicial (Opcional):</label>
         <select id="hour-start">
             <option value="">-- Selecciona Hora --</option>
-            <!-- Opciones de 0 a 23 horas -->
             <script>
                 for(let i = 0; i < 24; i++) {
                     document.write(`<option value="${i.toString().padStart(2, '0')}">${i.toString().padStart(2, '0')}:00</option>`);
