@@ -130,8 +130,14 @@
     let dailyData = [];
     let hourlyData = [];
 
-    fetch(dailyJsonUrl).then(response => response.json()).then(data => dailyData = data);
-    fetch(hourlyJsonUrl).then(response => response.json()).then(data => hourlyData = data);
+    // Carga de datos
+    fetch(dailyJsonUrl)
+        .then(response => response.json())
+        .then(data => dailyData = data);
+
+    fetch(hourlyJsonUrl)
+        .then(response => response.json())
+        .then(data => hourlyData = data);
 
     function filterData() {
         const messages = document.getElementById('messages');
@@ -193,7 +199,8 @@
                 zeroline: false,
                 type: 'date',
                 tickformat: '%Y-%m-%d',
-                tickangle: -45
+                tickangle: -45,
+                dtick: 'D1' // Mostrar diariamente
             },
             yaxis: {
                 title: 'Precipitación (mm)',
