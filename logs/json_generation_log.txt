@@ -1312,3 +1312,11 @@ Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_preci
 Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx: [Errno 112] Host is down: '/mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx'
 ---- Script finalizado en 2025-08-31 08:20:21.943805 ----
 
+
+---- Script iniciado en 2025-09-01 08:20:01.448147 ----
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/merged_precipitation_data.json
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
+---- Script finalizado en 2025-09-01 08:20:02.125801 ----
+
