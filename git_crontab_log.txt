@@ -2581,3 +2581,19 @@ Archivos disponibles para commit:
 -rwxr--r-- 1 srvdpahidrologia srvdpahidrologia  92K 2025-10-05 08:20 daily_precipitation_summary.json
 -rwxrwxr-x 1 srvdpahidrologia srvdpahidrologia 7,4K 2025-03-19 14:35 index.html
 -rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 2,0M 2025-10-05 08:20 merged_precipitation_data.json
+✅ Hay cambios en los archivos.
+[main d6cf23e] Actualización automática del 05-10-2025 08:30
+ 2 files changed, 21 insertions(+)
+ssh: Could not resolve hostname github.com: Temporary failure in name resolution
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+===== Fin del proceso =====
+===== Inicio de la subida automática a GitHub =====
+Fecha y hora: lun 06 oct 2025 08:30:01 -05
+Directorio del repositorio: /home/srvdpahidrologia/celec_precipitacion
+Archivos disponibles para commit:
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia  92K 2025-10-06 08:20 daily_precipitation_summary.json
+-rwxrwxr-x 1 srvdpahidrologia srvdpahidrologia 7,4K 2025-03-19 14:35 index.html
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 2,0M 2025-10-06 08:20 merged_precipitation_data.json
