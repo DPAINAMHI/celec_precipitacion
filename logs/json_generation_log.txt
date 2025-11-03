@@ -1804,3 +1804,9 @@ Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_preci
 Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx: [Errno 2] No such file or directory: '/mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx'
 ---- Script finalizado en 2025-11-02 08:20:02.169693 ----
 
+
+---- Script iniciado en 2025-11-03 08:20:02.089554 ----
+Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx: [Errno 2] No such file or directory: '/mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx'
+Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx: [Errno 2] No such file or directory: '/mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx'
+---- Script finalizado en 2025-11-03 08:20:02.092609 ----
+
