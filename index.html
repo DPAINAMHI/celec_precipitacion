@@ -151,10 +151,8 @@ const hourlyJsonUrl = `./merged_precipitation_data.json?v=${v}`;
         }
 
         const startDate = new Date(`${startDateInput}T00:00:00`);
-const endDate = new Date(`${endDateInput}T23:59:59`);
+        const endDate = new Date(`${endDateInput}T23:59:59`);
 
-
-        const endDate = new Date(endDateInput);
         const hourStart = document.getElementById('hour-start').value;
         const hourEnd = document.getElementById('hour-end').value;
 
