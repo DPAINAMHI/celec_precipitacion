@@ -4098,3 +4098,10 @@ Archivos disponibles para commit:
 To github.com:DPAINAMHI/celec_precipitacion.git
    dc72f77..9d5f73c  main -> main
 ===== Fin del proceso =====
+===== Inicio de la subida automática a GitHub =====
+Fecha y hora: vie 30 ene 2026 09:25:01 -05
+Directorio del repositorio: /home/srvdpahidrologia/celec_precipitacion
+Archivos disponibles para commit:
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 114K 2026-01-30 09:15 daily_precipitation_summary.json
+-rwxrwxr-x 1 srvdpahidrologia srvdpahidrologia 7,4K 2026-01-05 11:14 index.html
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 2,4M 2026-01-30 09:15 merged_precipitation_data.json
