@@ -2766,3 +2766,11 @@ Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_preci
 Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
 ---- Script finalizado en 2026-02-26 09:15:03.033211 ----
 
+
+---- Script iniciado en 2026-02-27 09:15:01.897369 ----
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/merged_precipitation_data.json
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
+---- Script finalizado en 2026-02-27 09:15:02.830056 ----
+
