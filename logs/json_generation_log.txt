@@ -3022,3 +3022,11 @@ Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_preci
 Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
 ---- Script finalizado en 2026-03-30 09:15:03.228496 ----
 
+
+---- Script iniciado en 2026-03-31 09:15:01.485736 ----
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/merged_precipitation_data.json
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
+---- Script finalizado en 2026-03-31 09:15:02.439000 ----
+
