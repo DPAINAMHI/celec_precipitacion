@@ -3396,3 +3396,19 @@ Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_preci
 Error cargando /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx: [Errno 2] No such file or directory: '/mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx'
 ---- Script finalizado en 2026-05-18 10:35:46.675669 ----
 
+
+---- Script iniciado en 2026-05-18 10:55:01.627762 ----
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/merged_precipitation_data.json
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
+---- Script finalizado en 2026-05-18 10:55:02.661012 ----
+
+
+---- Script iniciado en 2026-05-18 11:13:30.070103 ----
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Merged/merged_precipitation_data.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/merged_precipitation_data.json
+Archivo cargado: /mnt/carpeta-compartida-DPA/CELEC_PAUTE/Datos_Daily/daily_precipitation_summary.xlsx
+Archivo JSON guardado: /home/srvdpahidrologia/celec_precipitacion/daily_precipitation_summary.json
+---- Script finalizado en 2026-05-18 11:13:31.094060 ----
+
