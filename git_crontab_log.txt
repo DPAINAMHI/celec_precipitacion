@@ -6454,3 +6454,24 @@ Estado Git antes del commit:
  M git_crontab_log.txt
  M logs/json_generation_log.txt
  M merged_precipitation_data.json
+✅ Hay cambios en los archivos.
+[main 2070f9a] Actualización automática del 18-07-2026 08:27
+ 4 files changed, 31 insertions(+), 2 deletions(-)
+To github.com:DPAINAMHI/celec_precipitacion.git
+   4aec382..2070f9a  main -> main
+===== Fin del proceso =====
+===== Inicio de la subida automática a GitHub =====
+Fecha y hora: dom 19 jul 2026 08:27:01 -05
+Directorio del repositorio: /home/srvdpahidrologia/celec_precipitacion
+Usuario Git configurado:
+adrianarodriguezp
+arodriguezinamhi@gmail.com
+Archivos disponibles para commit:
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 147K 2026-07-19 08:22 daily_precipitation_summary.json
+-rwxrwxr-x 1 srvdpahidrologia srvdpahidrologia 7,4K 2026-01-05 11:14 index.html
+-rwxr--r-- 1 srvdpahidrologia srvdpahidrologia 3,1M 2026-07-19 08:22 merged_precipitation_data.json
+Estado Git antes del commit:
+ M daily_precipitation_summary.json
+ M git_crontab_log.txt
+ M logs/json_generation_log.txt
+ M merged_precipitation_data.json
